@@ -10,43 +10,62 @@ namespace ProblematicProblem
         static void Main(string[] args)
         {
             Random rng = new Random();
-            bool cont = true;
+            bool cont;
             List<string> activities = new List<string>()
             {
                 "Movies", "Paintball", "Bowling", "Lazer Tag", "LAN Party", "Hiking", "Axe Throwing", "Wine Tasting"
             };
+            
             Console.Write(
                 "Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ");
-            var input1 = (Console.ReadLine().ToLower() == "yes");
-            cont = input1;
-            if (cont == false)
+            var input1 = Console.ReadLine().ToLower();
+            while (input1 != "yes" && input1 != "no")
             {
+                Console.WriteLine("Invalid response, please type yes/no");
+                input1 = Console.ReadLine().ToLower();
+            }
+            cont = (input1 == "yes");
+            if (!cont)
+            {
+                Console.WriteLine("Goodbye!");
                 return;
             }
             Console.WriteLine();
+            
             Console.Write("We are going to need your information first! What is your name? ");
             string userName = Console.ReadLine();
             Console.WriteLine();
+            
             Console.Write("What is your age? ");
             int.TryParse(Console.ReadLine(), out int userAge);
             Console.WriteLine();
+            
             Console.Write("Would you like to see the current list of activities? yes/no: ");
-            var input2 = (Console.ReadLine().ToLower() == "yes");
-            bool seeList = input2;
-            if (seeList)
+            var seeList = Console.ReadLine().ToLower();
+            while (seeList != "yes" && seeList != "no")
+            {
+                Console.WriteLine("Invalid response, please type yes/no");
+                seeList = Console.ReadLine().ToLower();
+            }
+            
+            if (seeList == "yes")
             {
                 foreach (string activity in activities)
                 {
                     Console.Write($"{activity}, ");
                     Thread.Sleep(250);
                 }
-
+                
                 Console.WriteLine();
                 Console.Write("Would you like to add any activities before we generate one? yes/no: ");
-                var input3 = (Console.ReadLine().ToLower() == "yes");
-                bool addToList = input3;
+                var addToList = Console.ReadLine().ToLower();
+                while (addToList != "yes" && addToList != "no")
+                {
+                    Console.WriteLine("Invalid response, please type yes/no");
+                    addToList = Console.ReadLine().ToLower();
+                }
                 Console.WriteLine();
-                while (addToList)
+                while (addToList == "yes")
                 {
                     Console.Write("What would you like to add? ");
                     string userAddition = Console.ReadLine();
@@ -59,8 +78,13 @@ namespace ProblematicProblem
 
                     Console.WriteLine();
                     Console.WriteLine("Would you like to add more? yes/no: ");
-                    var input4 = (Console.ReadLine().ToLower() == "yes");
-                    addToList = input4;
+                    var addMore = Console.ReadLine().ToLower();
+                    while (addMore != "yes" && addMore != "no")
+                    {
+                        Console.WriteLine("Invalid response, please type yes/no");
+                        addMore = Console.ReadLine().ToLower();
+                    }
+                    addToList = addMore;
                 }
             }
             while (cont)
@@ -95,8 +119,13 @@ namespace ProblematicProblem
                 Console.Write(
                     $"Ah got it! {userName}, your random activity is: {randomActivity}! Is this ok or do you want to grab another activity? Keep/Redo: ");
                 Console.WriteLine();
-                var input5 = (Console.ReadLine().ToLower() != "keep");
-                cont = input5;
+                var keepOrNot = Console.ReadLine().ToLower();
+                while (keepOrNot != "keep" && keepOrNot != "redo")
+                {
+                    Console.WriteLine("Invalid response, please type yes/no");
+                    keepOrNot = Console.ReadLine().ToLower();
+                }
+                cont = (keepOrNot != "keep");
             }
         }
     }
