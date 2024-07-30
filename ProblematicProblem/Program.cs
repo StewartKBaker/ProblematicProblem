@@ -18,13 +18,13 @@ namespace ProblematicProblem
             
             Console.Write(
                 "Hello, welcome to the random activity generator! \nWould you like to generate a random activity? yes/no: ");
-            var input1 = Console.ReadLine().ToLower();
-            while (input1 != "yes" && input1 != "no")
+            var generateProgram = Console.ReadLine().ToLower();
+            while (generateProgram != "yes" && generateProgram != "no")
             {
                 Console.WriteLine("Invalid response, please type yes/no");
-                input1 = Console.ReadLine().ToLower();
+                generateProgram = Console.ReadLine().ToLower();
             }
-            cont = (input1 == "yes");
+            cont = (generateProgram == "yes");
             if (!cont)
             {
                 Console.WriteLine("Goodbye!");
@@ -65,6 +65,7 @@ namespace ProblematicProblem
                     addToList = Console.ReadLine().ToLower();
                 }
                 Console.WriteLine();
+                
                 while (addToList == "yes")
                 {
                     Console.Write("What would you like to add? ");
@@ -75,8 +76,8 @@ namespace ProblematicProblem
                         Console.Write($"{activity}, ");
                         Thread.Sleep(250);
                     }
-
                     Console.WriteLine();
+                    
                     Console.WriteLine("Would you like to add more? yes/no: ");
                     var addMore = Console.ReadLine().ToLower();
                     while (addMore != "yes" && addMore != "no")
@@ -122,7 +123,7 @@ namespace ProblematicProblem
                 var keepOrNot = Console.ReadLine().ToLower();
                 while (keepOrNot != "keep" && keepOrNot != "redo")
                 {
-                    Console.WriteLine("Invalid response, please type yes/no");
+                    Console.WriteLine("Invalid response, please type keep/redo");
                     keepOrNot = Console.ReadLine().ToLower();
                 }
                 cont = (keepOrNot != "keep");
